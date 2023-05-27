@@ -13,7 +13,13 @@ import (
 
 // CreateAuthor is the resolver for the createAuthor field.
 func (r *mutationResolver) CreateAuthor(ctx context.Context, input model.NewAuthor) (*model.Author, error) {
-	panic(fmt.Errorf("not implemented: CreateAuthor - createAuthor"))
+	author, err := r.AuthorDB.Create(input.Name)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return &model.Author{author.ID, author.Name, nil}, nil
 }
 
 // CreateBook is the resolver for the createBook field.
