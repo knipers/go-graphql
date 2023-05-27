@@ -8,4 +8,5 @@ import "github.com/knipers/go-graphql/internal/database"
 
 type Resolver struct {
 	AuthorDB *database.Author
+	BookDB   *database.Book
 }
